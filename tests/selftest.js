@@ -569,7 +569,7 @@ console.log(L.C.bold('⑨ 一键开单 → 收图归档 → 判读 → spec（ne
 const CASE_DIR = path.join(TMP, 'nc');
 const NC_INBOX = path.join(CASE_DIR, '99号机', '截图', '_待归档');
 const NC_SHOT = path.join(CASE_DIR, '99号机', '截图');
-const NC_BLANK = path.join(CASE_DIR, '99号机', '一体化信关站中星光电性能检测记录表.xlsx');
+const NC_BLANK = path.join(CASE_DIR, '99号机', '一体化信关站电性能检测记录表.xlsx');
 
 check('new_case：--help 打印用法且退出码 0；缺 --machine 退出码 2', () => {
   const h = run('new_case.js', ['--help']);
@@ -640,7 +640,7 @@ check('new_case：--template 造出的待填空表是干净的、且清空结果
   must(r.code === 0, 'dry-run 应 0，实为 ' + r.code);
   const r2 = run('new_case.js', ['--machine=88', '--root=' + CASE_DIR, '--template=' + SAMPLE]);
   must(r2.code === 0, '退出码应 0，实为 ' + r2.code + '\n' + r2.out);
-  const blank = path.join(CASE_DIR, '88号机', '一体化信关站中星光电性能检测记录表.xlsx');
+  const blank = path.join(CASE_DIR, '88号机', '一体化信关站电性能检测记录表.xlsx');
   must(fs.existsSync(blank), '未生成待填空表');
   // 原件留档必须在，且与源文件字节一致（永不改原始文件）
   const arch = path.join(CASE_DIR, '88号机', '批次', '原件字节留档', '公司下发原件_未改动.xlsx');
@@ -649,7 +649,7 @@ check('new_case：--template 造出的待填空表是干净的、且清空结果
   must(fs.existsSync(arch + '.sha256'), '未写 .sha256');
   // 二次开单到另一目录，哈希应相同（清空流水线确定性，§18.2）
   run('new_case.js', ['--machine=88', '--root=' + path.join(TMP, 'nc2'), '--template=' + SAMPLE]);
-  const blank2 = path.join(TMP, 'nc2', '88号机', '一体化信关站中星光电性能检测记录表.xlsx');
+  const blank2 = path.join(TMP, 'nc2', '88号机', '一体化信关站电性能检测记录表.xlsx');
   must(fs.existsSync(blank2) && L.sha256File(blank2) === L.sha256File(blank),
     '清空结果不确定：同输入两次 SHA 不同');
   // 空表里不该残留测量数据：dump 出的待填数应等于蓝底数

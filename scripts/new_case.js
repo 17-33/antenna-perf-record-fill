@@ -18,13 +18,13 @@
  * 用法:
  *   node new_case.js --machine=37 --root=<工作区> [选项]
  *   node new_case.js --machine=37 --root=<工作区> --template=<公司下发模板.xlsx>
- *   node new_case.js --machine=37 --root=<工作区> --template=... --name=一体化信关站中星光电性能检测记录表
+ *   node new_case.js --machine=37 --root=<工作区> --template=... --name=一体化信关站电性能检测记录表
  *
  * 参数:
  *   --machine=<N>        机号（必填）。目录名 = "<N>号机"
  *   --root=<dir>         工作区根目录（必填）。实际建在 <root>/<N>号机/
  *   --template=<xlsx>    公司下发的记录表原件。给了就自动做 备份+清空+抹缓存
- *   --name=<表格名>      表格文件名主干（默认「一体化信关站中星光电性能检测记录表」）
+ *   --name=<表格名>      表格文件名主干（默认「一体化信关站电性能检测记录表」）
  *   --date=<YYYY-MM-DD>  打单日期（默认今天）
  *   --set=<目录名>       追加一个自定义子目录（可重复，用逗号分隔）
  *   --force              目标已存在时先备份到 <root>/<N>号机_已存在_<ts>/，再重建（默认直接拒绝）
@@ -79,7 +79,7 @@ if (!flags.root) {
 
 const ROOT = path.resolve(String(flags.root));
 const CASE = path.join(ROOT, machine + '号机');
-const TABLE_BASE = String(flags['name'] || '一体化信关站中星光电性能检测记录表');
+const TABLE_BASE = String(flags['name'] || '一体化信关站电性能检测记录表');
 const DATE = String(flags.date || new Date().toISOString().slice(0, 10));
 const DRY = !!flags['dry-run'];
 const TEMPLATE = flags.template ? path.resolve(String(flags.template)) : null;
