@@ -1,0 +1,20 @@
+# ---- macOS / 编辑器 ----
+.DS_Store
+._*
+.AppleDouble
+*.swp
+
+# ---- 构建产物（由 scripts/ocr_image.swift 编译所得，可重建）----
+scripts/.bin/
+
+# ---- Node ----
+node_modules/
+
+# ---- 运行期产物（作业批次 / 导出 / 日志）----
+批次/
+导出/
+*.log
+*.tmp
+
+# ---- 打好的分发包 ----
+*.zip
